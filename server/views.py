@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import redirect, render
 from django.core.signing import BadSignature
 from django.core import signing
@@ -25,11 +26,17 @@ def homepage(request):
     form = StartGameForm()
 
     leaderboard_data = Leaderboard.objects.all()
+    gcp_key = settings.GCP_MAPS_KEY
 
     return render(
         request,
         "homepage.html",
-        {"form": form, "score": signed_score, "leaderboard_entries": leaderboard_data},
+        {
+            "form": form,
+            "score": signed_score,
+            "leaderboard_entries": leaderboard_data,
+            "gcp_key": gcp_key,
+        },
     )
 
 
@@ -47,18 +54,16 @@ def leaderboard(request):
             messages.error(request, "Missing username or score data.")
             return redirect("home")
 
-        if submission_id != request.session.get('submission_id'):
+        if submission_id != request.session.get("submission_id"):
             messages.error(request, "Invalid or reused submission ID.")
             return redirect("home")
         # Ensure the UUID can only be used once
-        if 'used_submission_ids' not in request.session:
-            request.session['used_submission_ids'] = []
+        if "used_submission_ids" not in request.session:
+            request.session["used_submission_ids"] = []
 
-        if submission_id in request.session['used_submission_ids']:
+        if submission_id in request.session["used_submission_ids"]:
             messages.error(request, "Duplicate submission detected.")
             return redirect("home")
-        
-
 
         # Validate signed score
         score = get_signed_data(signed_score)
@@ -68,8 +73,8 @@ def leaderboard(request):
 
         # Insert score and username into the leaderboard database here
         Leaderboard.objects.create(user=username, score=score)
-        request.session['used_submission_ids'].append(submission_id)
-        del request.session['submission_id']
+        request.session["used_submission_ids"].append(submission_id)
+        del request.session["submission_id"]
     return redirect("home")
 
 
@@ -97,7 +102,7 @@ def result(request):
             score += response
             signed_score = signing.dumps(score)
             submission_id = str(uuid.uuid4())
-            request.session['submission_id'] = submission_id
+            request.session["submission_id"] = submission_id
 
             # Set failure/success response based on answer
             template = "failure.html" if response <= 1 else "success.html"
@@ -107,7 +112,7 @@ def result(request):
                 "gain": response,
                 "city": city,
                 "user_city": answer,
-                "submission_id": submission_id
+                "submission_id": submission_id,
             }
             return render(request, template, context)
 
@@ -135,6 +140,7 @@ def playGame(request):
         location = quiz_data.get("location", {})
         city = location.get("location_name", "Unknown Location")
         signed_city = signing.dumps(city)
+        gcp_key = settings.GCP_MAPS_KEY
 
         # Prepare game context
         context = {
@@ -149,6 +155,7 @@ def playGame(request):
             "score": signed_score,
             "form": AnswerForm(),
             "city": signed_city,
+            "gcp_key": gcp_key,
         }
         return render(request, "game.html", context)
 

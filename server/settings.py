@@ -27,6 +27,7 @@ DEBUG = os.environ.get("DEBUG", False)
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
 
 genai.configure(api_key=os.environ["GCP_GEMINI_API_KEY"])
+GCP_MAPS_KEY = os.environ["GCP_MAPS_KEY"]
 
 # Application definition
 INSTALLED_APPS = [
