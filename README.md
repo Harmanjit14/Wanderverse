@@ -2,14 +2,14 @@
  # 🌍✨ **Wanderverse** ✨🌍  
 **Submission for the [Google Photorealistic 3D Maps Challenge](https://google3dmaps.devpost.com)**
 
-Welcome to **Wanderverse**, an immersive and AI-powered place guessing game that transforms the way you experience and explore the world. From iconic landmarks to hidden gems, Wanderverse combines the thrill of competition, the beauty of photorealistic 3D maps, and the power of AI to create an unforgettable journey.
+Welcome to **Wanderverse**, an immersive and Gemini-powered place guessing game that transforms the way you experience and explore the world. From iconic landmarks to hidden gems, Wanderverse combines the thrill of competition, the beauty of photorealistic 3D maps, and the power of AI to create an unforgettable journey.
 
 🌐 **Deployed at:** [Play Now](https://harmanjit14.pythonanywhere.com/home)
 
 ---
 
 ## 🚀 **Project Overview**
-**Wanderverse** uses the **Google Maps Platform Photorealistic 3D Maps** to provide an engaging and lifelike experience. Players navigate real-world locations in stunning 3D, using AI-generated clues to make accurate guesses and climb the leaderboard. Explore, compete, and discover the beauty of our world like never before!
+**Wanderverse** uses the **Google Maps Platform's Photorealistic 3D Maps** and **Gemini AI** to provide an engaging and lifelike experience. Players navigate real-world locations in stunning 3D, using AI-generated clues to make accurate guesses and climb the leaderboard. Explore, compete, and discover the beauty of our world like never before!
 
 ---
 
@@ -26,6 +26,7 @@ Welcome to **Wanderverse**, an immersive and AI-powered place guessing game that
 - **Google Maps Platform Photorealistic 3D Maps** (via Maps JavaScript API)
 - **AI Clue Generation** powered by **Gemini**
 - **Django** for a robust and efficient backend framework
+- **Python 3.10** to run everything
 
 ---
 
@@ -46,19 +47,16 @@ The world is filled with incredible places waiting to be discovered. We wanted t
 ## 🔧 **Testing Instructions**
 Follow these steps to set up and run **Wanderverse** on your local environment:
 
-1. **Generate Gemini API Key and export it:**
+1. **Generate Gemini API Key, Google Maps Key and export it in your shell:**
    ```bash
    export GCP_GEMINI_API_KEY="GEMINI_KEY_EXAMPLE"
    export GCP_MAPS_KEY="GCP_MAPS_KEY_EXAMPLE"
    ```
 2. **Clone the Repository:**
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/Harmanjit14/Wanderverse)
    ```
 3. **Navigate to the Project Folder:**
-   ```bash
-   cd <folder-name>
-   ```
 4. **Install Dependencies:**
    ```bash
    pip install -r requirements.txt
@@ -85,7 +83,3 @@ Visit `http://localhost:8000` in your browser to start exploring **Wanderverse**
 
 ## 🏆 **Join the Adventure**
 Explore, guess, and compete in **Wanderverse**! Experience the world like never before, and let the games begin. Happy exploring! 🌍✨
-
----
-
-Feel free to tweak the instructions based on your specific requirements or environment setup!
