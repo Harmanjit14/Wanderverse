@@ -48,7 +48,8 @@ Follow these steps to set up and run **Wanderverse** on your local environment:
 
 1. **Generate Gemini API Key and export it:**
    ```bash
-   export GCP_GEMINI_API_KEY="Your API Key Here"
+   export GCP_GEMINI_API_KEY="GEMINI_KEY_EXAMPLE"
+   export GCP_MAPS_KEY="GCP_MAPS_KEY_EXAMPLE"
    ```
 2. **Clone the Repository:**
    ```bash
