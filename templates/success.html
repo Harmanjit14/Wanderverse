@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Congrats 🥳{% endblock %}
+
+{% block content %}
+<div style="
+height: 100%;
+width: 100%;
+background-color: green;
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin: 0;">
+
+    <div style="
+    opacity: 0.8;
+    max-width: 1000px;
+    background: rgb(0 0 0 / 20%);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;">
+
+        <div class="title" style="    
+                        color: white;
+                        font-size: 50px;
+                        font-weight: 900;
+                        text-align: center;
+                        ">
+            🌟 Congratulations, Trailblazer! 🌟
+        </div>
+        <div class="basecard bg-white"
+            style="padding: 15px; opacity: 0.8;display: flex;flex-direction: row;width: 35%;justify-content: center;">
+            <div class="title" style="    
+                        color: black;
+                        font-size: 25px;
+                        font-weight: 600;
+                        text-align: center;
+                        ">
+                Current Score: {{ totalScore }}
+            </div>
+        </div>
+        <br>
+        <div style="justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+        max-width: 1000px;
+        display: flex;
+        text-align: center;
+        ">
+            You chose {{ user_city }}, while the compass danced towards {{ city }}! 🗺️✨ You've snagged a total of {{ gain }}
+            points and additional 1 for attempting! 🥂 Your score's been fine-tuned—closer guesses shine brighter, while the adventure continues for
+            those playful near-misses. 🌠 Keep reaching for those perfect scores, Trailblazer! 🚀 The world is yours to
+            explore!
+            <br>
+            <div style="display: flex; justify-content: center; margin-top: 30px;">
+                <form method="post" action="{% url 'play' %}" style="display: flex; justify-content: center;">
+                    {% csrf_token %}
+                    <input type="hidden" name="score" value="{{ score }}">
+                    <button type="submit" class="btn btn-dark"
+                        style="border-radius: 10px; Z-index:1; width: 180px; height: 50px; opacity: 0.8;">
+                        Continue
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

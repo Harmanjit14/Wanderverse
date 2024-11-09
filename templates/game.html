@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    
+<script>
+(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+  key: "YOUR_KEY_HERE",
+  v: "alpha",
+});
+</script>
+<style>
+
+    .vAygCK-api-load-alpha-banner {
+        display: none;
+    }
+  </style>
+
+<script type="text/javascript">
+    function calculateBounds(lat, lng, kmRadius) {
+    
+        return {
+            south: lat - 0.02,
+            west: lng - 0.02,
+            north: lat + 0.02,
+            east: lng + 0.02
+        };
+    }
+let map;
+
+// Initialize the map
+async function init() {
+  const { Map3DElement } = await google.maps.importLibrary("maps3d");
+  const flyToCamera = {
+    center: { lat: {{latitude}}, lng: {{longitude}}, altitude:0.4044601331829445 },
+    tilt: {{tilt}},
+    range: {{range}},
+  };
+
+  map = new Map3DElement({
+    center: { lat: 37.81573807564325, lng: -122.47995130419135, altitude: 0.4044601331829445 },
+    tilt: 55.829756387193456,
+    range: 1000,
+    defaultLabelsDisabled: true
+  });
+
+  document.getElementById('mapContainer').append(map);
+
+  map.flyCameraTo({
+    endCamera: flyToCamera,
+    durationMillis: 5000,
+  });
+
+  map.addEventListener('gmp-animationend', () => {
+    map.flyCameraAround({
+      camera: flyToCamera,
+      durationMillis: 60000,
+      rounds: 1
+    });
+  }, {once: false});
+  customElements.whenDefined(map.localName).then(() => {
+    map.bounds = calculateBounds({{latitude}},{{longitude}}, 5);
+  });
+}
+init();
+</script>
+<div class="position-relative" style="height: 100%;width: 100%;">
+    <div style="height: 100%; width: 100%;" class="background-div" id="mapContainer">
+        {% comment %} This is where map will be rendered {% endcomment %}
+    </div>
+    <div class="basecard bg-white" style="position: absolute;top: 7%;left: 4%;width: 30% !important;padding: 15px !important; opacity: 0.8 !important;">
+        <div class="cardDivTextHeader">
+            Guess the place
+        </div>
+        <div class="cardDivText">
+            {{ history }}
+        </div>
+    </div>
+    <div style="position: absolute;right: 1%;top: 7%;width: 35%;z-index:1">
+        {% for hint in hints %}
+        <div class="basecard bg-white" style="margin-bottom: 5px; padding: 15px !important; opacity: 0.8 !important;display: flex;flex-direction: row; width:100%">
+            <i class="bi bi-lightbulb-fill" 
+            data-bs-toggle="tooltip" 
+            data-bs-placement="top" 
+            title="This is a hint icon!" 
+            style="font-size: 22px; margin-right: 5px;"></i>
+            <div class="cardDivText">
+                {{ hint }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div style="position: absolute;bottom: 7%;left: 4%;width: 30% !important;display: flex; flex-direction: row;">
+    
+            <form method="POST" action="{% url 'result' %}" style="width: 100%; display: flex; flex-direction: row;">
+              {% csrf_token %}
+              <input type="hidden" name="score" value="{{ score }}">
+              <input type="hidden" name="city" value="{{ city }}">
+              <div class="basecard bg-white" style="width: 80%; padding: 12px !important; opacity: 0.8 !important;">
+                  {{ form.answer }}
+              </div>
+              <button class="btn btn-primary btn-sm" style="margin-left: 10px; border-radius: 16px; z-index: 1" type="submit">
+                  Submit
+              </button>
+            </form>
+
+            {% if form.errors %}
+                <div class="errors">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        
+    </div>
+    
+</div>
+{% endblock %}

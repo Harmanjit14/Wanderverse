@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Try Again 😞{% endblock %}
+
+{% block content %}
+<div style="
+height: 100%;
+width: 100%;
+background-color: rgb(111, 0, 0);
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin: 0;">
+
+    <div style="
+    opacity: 0.8;
+    max-width: 1000px;
+    background: rgb(0 0 0 / 20%);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;">
+
+        <div class="title" style="    
+                        color: white;
+                        font-size: 50px;
+                        font-weight: 900;
+                        text-align: center;
+                        ">
+            😞 Don't Give Up, Trailblazer! 😞
+        </div>
+        <div class="basecard bg-white"
+            style="padding: 15px; opacity: 0.8;display: flex;flex-direction: row;width: 35%;justify-content: center;">
+            <div class="title" style="    
+                        color: black;
+                        font-size: 25px;
+                        font-weight: 600;
+                        text-align: center;
+                        ">
+                Final Score: {{ totalScore }}
+            </div>
+        </div>
+        <br>
+        <div style="justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+        max-width: 1000px;
+        display: flex;
+        text-align: center;
+        ">
+            Every setback is just a setup for an epic comeback! Reflect on your choice of {{ user_city }} while the
+            compass pointed to {{ city }}. Regroup and rise even stronger—your adventure is far from over! 💪
+            <br><br>
+            Mistakes are the stepping stones of progress, proving you’re in the game. Learn from them and let them guide
+            you toward success. The path ahead is still yours to conquer. Will you rise and try again? The choice is
+            yours, Trailblazer! 🚀
+            <br>
+            <div style="display: flex; justify-content: center; margin-top: 30px;width: 50%;">
+                <form method="POST" action="{% url 'leaderboard' %}"
+                    style="width: 100%;display: flex; flex-direction: column;">
+                    {% csrf_token %}
+                    <div style="margin-bottom: 10px;text-align: left;margin-left: 10px;">
+                        <label for="answer">
+                            <i class="bi bi-trophy" style="font-size: 22px; margin-right: 5px;"></i>
+                            Time to enter the Hall of Fame!
+                        </label>
+                    </div>
+                    <div style="display: flex;width: 100%;flex-direction: row;">
+                        <div class="basecard bg-white"
+                            style="width: 80%;padding: 12px !important; opacity: 0.8 !important;">
+                            <input type="hidden" name="score" value="{{ score }}">
+                            <input placeholder="Enter your name" class="ans-input"
+                                style="border: none; outline: none;width: 100%;" type="text" name="answer">
+                        </div>
+                        <button class="btn btn-dark btn-sm"
+                            style="margin-left: 10px;border-radius: 10px; opacity: 0.7;;Z-index:1" type="submit">
+                            Submit
+                        </button>
+                        <input type="hidden" name="submission_id" value="{{ submission_id }}">
+                    </div>
+                    <input type="hidden" name="score" value="{{ score }}">
+                </form>
+                <script type="text/javascript">
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const form = document.querySelector("form");
+                        const answerInput = document.querySelector("input[name='answer']");
+                        const submitButton = document.querySelector("button[type='submit']");
+
+                        form.addEventListener("submit", function (event) {
+                            if (answerInput.value.trim() === "") {
+                                event.preventDefault();
+                                alert("Answer field cannot be empty.");
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

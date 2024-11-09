@@ -1,0 +1,243 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    font-family: 'Poppins', 'Inter', sans-serif !important;
+}
+
+.background-div {
+    position: absolute;
+    /* Positioned at the bottom of the stack */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    z-index: 1;
+    /* Lowest stacking order */
+}
+
+.daterangepicker .ranges li.active {
+    background-color: transparent;
+    color: black;
+}
+
+.daterangepicker .ranges li.active:hover {
+    background-color: #eee;
+    color: black;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.space-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.space-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.row {
+    margin: 0px;
+}
+
+
+.c-h1 {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: 300;
+}
+
+.card-footer {
+    border: none;
+    border-bottom-left-radius: 16px !important;
+    border-bottom-right-radius: 16px !important;
+}
+
+.logout {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 5px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.logout:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.basecard {
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;ff */
+    width: 10%;
+    padding: 15px;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+    border-radius: 16px;
+    z-index: 2;
+}
+
+.cardDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardDivText {
+    font-weight: 500;
+    font-size: 18px;
+    /* color: grey; */
+}
+
+.cardDivTextHeader {
+    font-weight: 700;
+    font-size: 22px;
+
+}
+
+
+
+/* COLORS */
+
+.text-yellow {
+    color: #feca70;
+}
+
+.bg-yellow {
+    background-color: #feca70;
+}
+
+.text-blue {
+    color: #0c6efd;
+}
+
+.bg-blue {
+    background-color: #cfe2ff;
+}
+
+.text-purple {
+    color: #4650dd;
+}
+
+.bg-purple {
+    background-color: #dadcf8;
+}
+
+.bg-white {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+
+.text-primary2 {
+    color: rgb(50, 31, 219);
+}
+
+.bg-primary2 {
+    background-color: rgb(50, 31, 219);
+}
+
+.bg-red {
+    background-color: #f8d7da;
+}
+
+.text-red {
+    color: #e04958;
+}
+
+
+.bg-green {
+    background-color: #d7f0dd;
+}
+
+.text-green {
+    color: #35b653;
+}
+
+.text-grey {
+    color: rgb(108, 117, 125);
+}
+
+.text-400 {
+    font-weight: 400;
+}
+
+.text-300 {
+    font-weight: 300;
+}
+
+.text-p {
+    font-size: .7875rem !important;
+}
+
+.subtitle {
+    letter-spacing: .2em;
+    font-size: 0.8rem;
+}
+
+.title {
+    font-size: 400px;
+    font-weight: 700;
+    color: white;
+    opacity: 0.8;
+}
+
+.text-sm {
+    font-size: 0.6rem;
+}
+
+.text-md {
+    font-size: 1.35rem;
+}
+
+.text-lg {
+    font-size: 1.7rem;
+    ;
+}
+
+.svg {
+    width: 32px;
+    height: 32px;
+    vertical-align: text-bottom;
+    stroke-width: 3;
+}
+
+.datepicker:hover {
+    cursor: pointer;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.nav-link:hover {
+    background-color: grey;
+}
+
+.navbar-brand {
+    white-space: normal !important;
+}
+
+.ans-input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.ans-input:focus {
+    width: 100%;
+    outline: none;
+    border: none;
+}
