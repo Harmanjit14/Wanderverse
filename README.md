@@ -54,7 +54,7 @@ Follow these steps to set up and run **Wanderverse** on your local environment:
    ```
 2. **Clone the Repository:**
    ```bash
-   git clone [<repository-url>](https://github.com/Harmanjit14/Wanderverse)
+   git clone https://github.com/Harmanjit14/Wanderverse.git
    ```
 3. **Navigate to the Project Folder:**
 4. **Install Dependencies:**
