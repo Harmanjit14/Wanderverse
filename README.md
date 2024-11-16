@@ -44,34 +44,107 @@ The world is filled with incredible places waiting to be discovered. We wanted t
 
 ---
 
-## 🔧 **Testing Instructions**
-Follow these steps to set up and run **Wanderverse** on your local environment:
+## 🔧 How to Test **Wanderverse** (Step-by-Step)
 
-1. **Generate Gemini API Key, Google Maps Key and export it in your shell:**
-   ```bash
-   export GCP_GEMINI_API_KEY="GEMINI_KEY_EXAMPLE"
-   export GCP_MAPS_KEY="GCP_MAPS_KEY_EXAMPLE"
-   ```
-2. **Clone the Repository:**
+Follow these easy steps to test **Wanderverse** on your computer!
+
+---
+
+### 1. **Get the Required Keys**
+To set up **Wanderverse**, you will need two API keys:
+
+#### a. **Google Maps Key**
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2. Create a new project or select an existing one.
+3. Enable the **Maps JavaScript API** for your project.
+4. Generate and copy the **API Key**.
+
+#### b. **Gemini API Key**
+1. Visit the [Gemini API documentation](https://gemini.google.com).
+2. Follow the instructions to generate your **Gemini API Key**.
+3. Save the key securely for later use.
+
+---
+
+### 2. **Install Python**
+1. Check if Python is installed on your computer:
+   - Open a command prompt or terminal and type:  
+     ```bash
+     python --version
+     ```
+   - If it shows a version number, Python is already installed.
+2. If not, download Python from [python.org](https://www.python.org/downloads/).
+3. Install Python, ensuring that the **Add Python to PATH** option is selected during installation.
+
+---
+
+### 3. **Download the Project Files**
+1. Visit the [Wanderverse GitHub Repository](https://github.com/Harmanjit14/Wanderverse).
+2. Clone the repository using Git:
    ```bash
    git clone https://github.com/Harmanjit14/Wanderverse.git
    ```
-3. **Navigate to the Project Folder:**
-4. **Install Dependencies:**
+   OR
+3. Download the repository as a ZIP file, then extract it to a folder on your computer.
+
+---
+
+### 4. **Open Command Prompt or Terminal**
+1. Navigate to the folder where you cloned or extracted the project files.
+2. Open a command prompt (Windows) or terminal (Mac/Linux) in that folder.
+
+---
+
+### 5. **Install Project Dependencies**
+1. Install all required dependencies by running the following command:
    ```bash
    pip install -r requirements.txt
    ```
-5. **Set Up Database Migrations:**
+2. Ensure the installation completes without errors.
+
+---
+
+### 6. **Set Your API Keys**
+1. Set the API keys as environment variables by typing the following commands (replace `YourGeminiAPIKey` and `YourGoogleMapsAPIKey` with your actual keys):
+   ```bash
+   export GCP_GEMINI_API_KEY="YourGeminiAPIKey"
+   export GCP_MAPS_KEY="YourGoogleMapsAPIKey"
+   ```
+2. On Windows, use `set` instead of `export`:
+   ```bash
+   set GCP_GEMINI_API_KEY=YourGeminiAPIKey
+   set GCP_MAPS_KEY=YourGoogleMapsAPIKey
+   ```
+
+---
+
+### 7. **Set Up Database Migrations**
+1. Apply database migrations by running the following commands:
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
-6. **Run the Development Server:**
+
+---
+
+### 8. **Start the Game**
+1. Start the development server by running:
    ```bash
    python manage.py runserver
    ```
+2. This will launch the server locally and display the URL where the game can be accessed.
 
-Visit `http://localhost:8000` in your browser to start exploring **Wanderverse** locally!
+---
+
+### 9. **Open the Game in Your Browser**
+1. Open a web browser.
+2. Go to the following URL:  
+   `http://localhost:8000`
+
+---
+
+### Enjoy Testing **Wanderverse**!
+Feel free to explore the application, test features, and report any issues or feedback. Have fun!
 
 ---
 
