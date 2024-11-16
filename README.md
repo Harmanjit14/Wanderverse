@@ -43,7 +43,6 @@ Welcome to **Wanderverse**, an immersive and Gemini-powered place guessing game 
 The world is filled with incredible places waiting to be discovered. We wanted to make exploration fun, interactive, and educational by combining the latest in mapping technology and artificial intelligence. By gamifying the experience, we hope to inspire a deeper appreciation for geography and make learning about our world both engaging and enjoyable.
 
 ---
----
 
 ## 🔧 How to Test **Wanderverse** (Step-by-Step)
 
@@ -125,7 +124,6 @@ To set up **Wanderverse**, you will need two API keys:
 ### Enjoy Testing **Wanderverse**!
 Feel free to explore the application, test features, and report any issues or feedback. Have fun!
 
----
 ---
 
 ## 🌐 **Links & Resources**
