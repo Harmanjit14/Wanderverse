@@ -1,7 +1,7 @@
 import google.generativeai as genai
+from server.geminiMethods.getQUIZ import extract_json_from_text
 from ..API.constants import scoreFormat, scoreResponseFormat
 import json
-
 
 def validateQuiz(user_guess, correct_answer):
     # Refine query for Gemini API to specify type of response requested
@@ -20,7 +20,7 @@ def validateQuiz(user_guess, correct_answer):
             # Assuming the content text is in a JSON-compatible format, parse it
             try:
                 # Parse the response content to JSON
-                content_text = content_text.strip("```json").strip("```").strip()
+                content_text = extract_json_from_text(content_text)
                 generated_data = json.loads(content_text)
                 score = generated_data.get("scoring", {}).get("score", 0)
                 score = int(score)
