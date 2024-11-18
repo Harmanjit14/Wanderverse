@@ -51,7 +51,7 @@ def extract_json_from_text(input_text):
     
     # If no '{' is found, return an error message
     if start_index == -1:
-        return "No JSON object found"
+        raise ValueError("No JSON data found in the input text")
     
     # Find the corresponding closing brace '}' after the opening brace
     open_braces = 0
