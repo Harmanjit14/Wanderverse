@@ -28,8 +28,7 @@ def getRandomQuiz():
             # Assuming the content text is in a JSON-compatible format, parse it
             try:
                 # Parse the response content to JSON
-                content_text = content_text.strip("json")
-                content_text = content_text.strip("```")
+                content_text = extract_json_from_text(content_text)
                 generated_data = json.loads(content_text)
 
                 # Format the response into a constant structure
@@ -45,3 +44,31 @@ def getRandomQuiz():
         return None
 
     return None
+
+def extract_json_from_text(input_text):
+    # Find the first opening brace '{'
+    start_index = input_text.find('{')
+    
+    # If no '{' is found, return an error message
+    if start_index == -1:
+        return "No JSON object found"
+    
+    # Find the corresponding closing brace '}' after the opening brace
+    open_braces = 0
+    end_index = start_index
+    
+    # Iterate through the string to find the corresponding closing brace
+    for i in range(start_index, len(input_text)):
+        if input_text[i] == '{':
+            open_braces += 1
+        elif input_text[i] == '}':
+            open_braces -= 1
+        
+        # When we balance the braces (open_braces == 0), we've found the end of the JSON object
+        if open_braces == 0:
+            end_index = i + 1  # Include the closing brace
+            break
+    
+    # Extract the substring containing the JSON data
+    json_data = input_text[start_index:end_index]
+    return json_data
