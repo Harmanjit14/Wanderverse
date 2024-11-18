@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "ekscv^yj%8+myw8+b)i85$4*)udws4+!lcv@w5o*&3mx=_ubn7")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", False) 
+DEBUG = os.environ.get("DEBUG", True) 
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",")
 
 genai.configure(api_key=os.environ["GCP_GEMINI_API_KEY"])
 GCP_MAPS_KEY = os.environ["GCP_MAPS_KEY"]
